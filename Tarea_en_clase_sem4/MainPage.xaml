@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Tarea_en_clase_sem4.MainPage"
+             Title="Calificaciones"
+             BackgroundColor="#F4F6FB">
+
+    <!-- ScrollView para poder desplazarse en pantallas pequeñas -->
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="16">
+
+            <!-- ENCABEZADO -->
+            <Border BackgroundColor="#1F4E9C" StrokeThickness="0" Padding="20">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="16" />
+                </Border.StrokeShape>
+                <VerticalStackLayout Spacing="4">
+                    <Label Text="Instituto Sudamericano"
+                           TextColor="White" FontSize="22" FontAttributes="Bold" />
+                    <Label Text="Sistema de calificaciones"
+                           TextColor="#D6E2F7" FontSize="14" />
+                </VerticalStackLayout>
+            </Border>
+
+            <!-- DATOS GENERALES: estudiante y fecha -->
+            <Border BackgroundColor="White" Stroke="#E2E6F0" Padding="16">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="16" />
+                </Border.StrokeShape>
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="Datos generales" FontSize="16"
+                           FontAttributes="Bold" TextColor="#1F4E9C" />
+
+                    <Label Text="Estudiante" TextColor="#555555" />
+                    <!-- Los nombres se cargan desde MainPage.xaml.cs -->
+                    <Picker x:Name="pickerEstudiante"
+                            Title="Seleccione un estudiante"
+                            TextColor="#222222" TitleColor="#888888" />
+                    <Label x:Name="errEstudiante" TextColor="#C62828"
+                           FontSize="12" IsVisible="False" />
+
+                    <Label Text="Fecha" TextColor="#555555" />
+                    <DatePicker x:Name="dateFecha" TextColor="#222222" />
+                </VerticalStackLayout>
+            </Border>
+
+            <!-- PARCIAL 1 -->
+            <Border BackgroundColor="White" Stroke="#E2E6F0" Padding="16">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="16" />
+                </Border.StrokeShape>
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="Parcial 1" FontSize="16"
+                           FontAttributes="Bold" TextColor="#1F4E9C" />
+
+                    <Label Text="Nota Seguimiento 1 (sobre 10 x 0.3)" TextColor="#555555" />
+                    <Entry x:Name="entSeg1" Placeholder="0 a 10"
+                           Keyboard="Numeric" TextColor="#222222" />
+                    <Label x:Name="errSeg1" TextColor="#C62828"
+                           FontSize="12" IsVisible="False" />
+
+                    <Label Text="Examen 1 (sobre 10 x 0.2)" TextColor="#555555" />
+                    <Entry x:Name="entExa1" Placeholder="0 a 10"
+                           Keyboard="Numeric" TextColor="#222222" />
+                    <Label x:Name="errExa1" TextColor="#C62828"
+                           FontSize="12" IsVisible="False" />
+                </VerticalStackLayout>
+            </Border>
+
+            <!-- PARCIAL 2 -->
+            <Border BackgroundColor="White" Stroke="#E2E6F0" Padding="16">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="16" />
+                </Border.StrokeShape>
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="Parcial 2" FontSize="16"
+                           FontAttributes="Bold" TextColor="#1F4E9C" />
+
+                    <Label Text="Nota Seguimiento 2 (sobre 10 x 0.3)" TextColor="#555555" />
+                    <Entry x:Name="entSeg2" Placeholder="0 a 10"
+                           Keyboard="Numeric" TextColor="#222222" />
+                    <Label x:Name="errSeg2" TextColor="#C62828"
+                           FontSize="12" IsVisible="False" />
+
+                    <Label Text="Examen 2 (sobre 10 x 0.2)" TextColor="#555555" />
+                    <Entry x:Name="entExa2" Placeholder="0 a 10"
+                           Keyboard="Numeric" TextColor="#222222" />
+                    <Label x:Name="errExa2" TextColor="#C62828"
+                           FontSize="12" IsVisible="False" />
+                </VerticalStackLayout>
+            </Border>
+
+            <!-- BOTONES -->
+            <Button Text="Calcular"
+                    Clicked="OnCalcularClicked"
+                    BackgroundColor="#1F4E9C" TextColor="White"
+                    FontAttributes="Bold" CornerRadius="12" HeightRequest="50" />
+
+            <Button Text="Limpiar"
+                    Clicked="OnLimpiarClicked"
+                    BackgroundColor="Transparent" TextColor="#1F4E9C"
+                    BorderColor="#1F4E9C" BorderWidth="1"
+                    CornerRadius="12" HeightRequest="46" />
+
+            <!-- TARJETA DE RESULTADO (oculta hasta que se calcula) -->
+            <Border x:Name="cardResultado" IsVisible="False"
+                    BackgroundColor="#E8F5E9" StrokeThickness="0" Padding="16">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="16" />
+                </Border.StrokeShape>
+                <VerticalStackLayout Spacing="6">
+                    <Label x:Name="lblEstado" FontSize="22" FontAttributes="Bold"
+                           HorizontalOptions="Center" />
+                    <Label x:Name="lblNotaFinal" FontSize="16"
+                           HorizontalOptions="Center" TextColor="#333333" />
+                    <Label x:Name="lblDetalle" FontSize="13"
+                           HorizontalOptions="Center" TextColor="#555555" />
+                </VerticalStackLayout>
+            </Border>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
